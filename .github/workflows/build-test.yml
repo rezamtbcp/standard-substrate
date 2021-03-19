@@ -21,7 +21,7 @@ jobs:
       - name: Install toolchain 2020-10-05
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly
+          toolchain: nightly-2020-10-05
       - name: Checkout master
         uses: actions/checkout@v2
       - name: Build
