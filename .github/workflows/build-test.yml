@@ -27,7 +27,7 @@ jobs:
       - name: Run init.sh script
         run: ./scripts/init.sh
       - name: Build
-        run: cargo +nightly-2020-10-05 build --release
+        run: cargo build --release
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
