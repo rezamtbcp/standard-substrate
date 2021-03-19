@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-push-template:
-    if: ${{ github.repository == 'substrate-developer-hub/substrate-node-template' }}
+  build-push-template:    
     runs-on: ubuntu-18.04
     steps:
     - name: Trigger playground inclusion
