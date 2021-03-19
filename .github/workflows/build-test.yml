@@ -97,7 +97,7 @@ jobs:
           path: target/release/standard-node
 
 
-  macos_11.0:
+  macos_11:
     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
     runs-on: macos-11.0
 
