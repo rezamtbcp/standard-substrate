@@ -12,18 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install toolchain 2020-10-05
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly-2020-10-05
       - name: Add wasm toolchain
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
           target: wasm32-unknown-unknown
           override: true
-      - name: Install toolchain 2020-10-05
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly-2020-10-05
       - name: Checkout master
         uses: actions/checkout@v2
+      - name: Run init.sh script
+        run: ./scripts/init.sh
       - name: Build
         run: cargo +nightly-2020-10-05 build --release
       - name: Upload artifact
@@ -31,39 +33,3 @@ jobs:
         with:
           name: ubuntu-18.04-standard-node
           path: target/release/standard-node
-
-  test-bins:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Add wasm toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          target: wasm32-unknown-unknown
-          override: true
-      - name: Install toolchain 2020-10-05
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: "2020-10-05"
-      - name: Checkout master
-        uses: actions/checkout@v2
-      - name: Tests
-        run: cargo +nightly-2020-10-05 test --bins
-
-#  test-lib:
-#
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#    - name: Add wasm toolchain
-#      uses: actions-rs/toolchain@v1
-#      with:
-#        toolchain: nightly
-#        target: wasm32-unknown-unknown
-#        override: true
-#    - name: Checkout master
-#      uses: actions/checkout@v2
-#    - name: Tests
-#      run: cargo test --lib
