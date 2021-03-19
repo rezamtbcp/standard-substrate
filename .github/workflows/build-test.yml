@@ -16,12 +16,14 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly-2020-10-05
+          
       - name: Add wasm toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly
+          toolchain: nightly-2020-10-05
           target: wasm32-unknown-unknown
           override: true
+          
       - name: Checkout master
         uses: actions/checkout@v2
       - name: Run init.sh script
