@@ -96,32 +96,32 @@ jobs:
           name: macos-latest-standard-node
           path: target/release/standard-node
 
+  # Only Private Github Service
+#   macos_11:
+#     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+#     runs-on: macos-11.0
 
-  macos_11:
-    # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
-    runs-on: macos-11.0
+#     steps:
+#       - name: Install toolchain 2020-10-05
+#         uses: actions-rs/toolchain@v1
+#         with:
+#           toolchain: nightly-2020-10-05
 
-    steps:
-      - name: Install toolchain 2020-10-05
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly-2020-10-05
+#       - name: Add wasm toolchain
+#         uses: actions-rs/toolchain@v1
+#         with:
+#           toolchain: nightly-2020-10-05
+#           target: wasm32-unknown-unknown
+#           override: true
 
-      - name: Add wasm toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly-2020-10-05
-          target: wasm32-unknown-unknown
-          override: true
-
-      - name: Checkout master
-        uses: actions/checkout@v2
-      - name: Run init.sh script
-        run: ./scripts/init.sh
-      - name: Build
-        run: cargo +nightly-2020-10-05 build --release
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: macos-11.0-standard-node
-          path: target/release/standard-node
+#       - name: Checkout master
+#         uses: actions/checkout@v2
+#       - name: Run init.sh script
+#         run: ./scripts/init.sh
+#       - name: Build
+#         run: cargo +nightly-2020-10-05 build --release
+#       - name: Upload artifact
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: macos-11.0-standard-node
+#           path: target/release/standard-node
